@@ -1,0 +1,6 @@
+vep:
+  image: ensemblorg/ensembl-vep:release_105.0
+  version: 105
+spliceai:
+  image: skysbiodocker/spliceai
+  version: latest

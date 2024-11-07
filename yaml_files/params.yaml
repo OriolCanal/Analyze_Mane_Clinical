@@ -1,0 +1,15 @@
+runs_dir: "/home/ocanal/Desktop/vep_with_gff"
+runs_analyzed_yaml: "/home/ocanal/Desktop/Mane_clinical/yaml_files/runs_analyzed.yaml"
+log_path: "/home/ocanal/Desktop/vep_with_gff/mane_clinical.log"
+bed_path: "/home/ocanal/Desktop/Mane_clinical/sorted_mane_clinical_AGILENT_GLOBAL_gatk.bed"
+ref_fasta_path: "/home/ocanal/REF_DIR/hg19/ucsc.hg19.fasta"
+mane_clinical:
+  CACNA1C: ENST00000399603
+  CACNA1D: ENST00000288139
+  CACNB2: ENST00000377329
+  FHL1: ENST00000394155
+  LDB3: ENST00000263066
+  LMNA: ENST00000361308
+  TP63: ENST00000354600
+  TTN: ENST00000360870
+  MYH1: ENST00000452625
