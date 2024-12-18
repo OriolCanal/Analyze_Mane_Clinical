@@ -1,6 +1,6 @@
 version: 1.68
-ann_dir: /home/ocanal/ANN_DIR
-main_yaml_path: /home/ocanal/Desktop/GC_NGS_PIPELINE_15122023
+ann_dir: /raw-data/ANNOTATIONS/ANN_DIR
+main_yaml_path: /home/udmmp/GC_NGS_PIPELINE
 genome_reference: 19
 
 # ann_dir: /home/bdelolmo/ANN_DIR
@@ -34,7 +34,7 @@ gencode_gtf:
   version: 44
   resource_name: gencode_gtf
   dirname: gencode_gtf
-  file: hg19/ #gencode.v44lift37.annotation.sorted.gtf.gz
+  file: hg19/gencode.v39lift37.annotation.gff3.gz
   last_review: 20231215
 spliceai_transcript:
   version: 44
@@ -216,6 +216,7 @@ gnomad_exomes:
   - faf95_amr
   - faf95_eas
   - faf95_nfe
+  - faf95_sas
   - faf95
   last_review: '20230614'
   md5: cf31efdbd8379e74a23696639f99e27e

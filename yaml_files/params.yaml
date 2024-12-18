@@ -1,8 +1,8 @@
-runs_dir: "/home/ocanal/Desktop/vep_with_gff"
-runs_analyzed_yaml: "/home/ocanal/Desktop/Mane_clinical/yaml_files/runs_analyzed.yaml"
-log_path: "/home/ocanal/Desktop/vep_with_gff/mane_clinical.log"
-bed_path: "/home/ocanal/Desktop/Mane_clinical/sorted_mane_clinical_AGILENT_GLOBAL_gatk.bed"
-ref_fasta_path: "/home/ocanal/REF_DIR/hg19/ucsc.hg19.fasta"
+runs_dir: "/ngs-results/"
+runs_analyzed_yaml: "/home/udmmp/Desktop/Uri/Analyze_Mane_Clinical/yaml_files/runs_analyzed.yaml"
+log_path: "/home/udmmp/Desktop/Uri/Analyze_Mane_Clinical/mane_clinical.log"
+bed_path: "/home/udmmp/Desktop/Uri/Analyze_Mane_Clinical/sorted_mane_clinical_AGILENT_GLOBAL_gatk.bed"
+ref_fasta_path: "/raw-data/ANNOTATIONS/REF_DIR/hg19/ucsc.hg19.fasta"
 mane_clinical:
   CACNA1C: ENST00000399603
   CACNA1D: ENST00000288139
@@ -13,3 +13,10 @@ mane_clinical:
   TP63: ENST00000354600
   TTN: ENST00000360870
   MYH1: ENST00000452625
+  SCN5A: ENST00000413689
+bed_gff: "/home/udmmp/Desktop/Uri/Analyze_Mane_Clinical/genes_gff.bed"
+gff_transcripts:
+  FHL2: ENST00000530340
+  PDLIM3: ENST00000284767
+  ALPK3: ENST00000258888
+  EYA4: ENST00000355286

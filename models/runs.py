@@ -24,12 +24,15 @@ class Sample():
     all_samples: List['Sample'] = []
 
     def __init__(self, sample_id, sample_dir):
+
         self.sample_id = sample_id
         self.Bam = None
         self.Vcf = None
+        self.gff_vcf= None
         self.panel = None
         self.path = sample_dir
         self.vcf_dir = os.path.join(sample_dir, "VCF_FOLDER")
+        self.vep_vcf = os.path.join(self.vcf_dir, f"{self.sample_id}.gatk.vep.vcf")
         self.bam_dir = os.path.join(sample_dir, "BAM_FOLDER")
     
     def set_bam(self, Bam):
@@ -41,18 +44,25 @@ class Sample():
     def set_panel(self, panel):
         self.panel = panel
 
-    def run_haplotype_caller(self, bed_path, Ref_fasta):
-        if self.Vcf:
-            Log.info(f"Haplotype Caller won't be run as VCF already exists for sample {self.sample_id}")
-        
-        vcf_filename = f"{self.sample_id}_Mane_Clinical.vcf"
-        vcf_path = os.path.join(self.vcf_dir, vcf_filename)
-        if os.path.exists(vcf_path):
-            Log.info(f"Haplotype Caller won't be run as VCF already exists for sample {self.sample_id}")
+    def run_haplotype_caller(self, bed_path, Ref_fasta, mane):
+
+        if mane:
+            vcf_filename = f"{self.sample_id}_Mane_Clinical.vcf"
+            vcf_path = os.path.join(self.vcf_dir, vcf_filename)
+            if os.path.exists(vcf_path):
+                Log.info(f"Haplotype Caller won't be run as VCF already exists for sample {self.sample_id}")
+                self.Vcf = Vcf_Class(vcf_path)
+                return(0)
             self.Vcf = Vcf_Class(vcf_path)
-            return(0)
+        else:
+            vcf_filename = f"{self.sample_id}_genes_gff.vcf"
+            vcf_path = os.path.join(self.vcf_dir, vcf_filename)
+            if os.path.exists(vcf_path):
+                Log.info(f"Haplotype Caller won't be run as VCF already exists for sample {self.sample_id}")
+                self.gff_vcf = Vcf_Class(vcf_path)
+                return(0)
+            self.gff_vcf = Vcf_Class(vcf_path)
         
-        self.Vcf = Vcf_Class(vcf_path)
         
         bed_dir = os.path.dirname(bed_path)
         bed_filename = os.path.basename(bed_path)
@@ -66,7 +76,7 @@ class Sample():
             "-it", "broadinstitute/gatk:4.2.2.0",
             "gatk", "HaplotypeCaller", 
             "-I", f"/bam_data/{self.Bam.filename}",
-            "-O", f"/vcf_data/{self.Vcf.filename}",
+            "-O", f"/vcf_data/{vcf_filename}",
             "-L", f"/panel_data/{bed_filename}",
             "-R", f"/bundle/{Ref_fasta.filename}",
             "--native-pair-hmm-threads", "4"
